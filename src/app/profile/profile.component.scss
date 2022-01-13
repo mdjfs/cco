@@ -1,0 +1,33 @@
+.profile {
+  position: absolute;
+  top: 20vh;
+  height: 20vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 30vw;
+  left: 5vw;
+
+  .picture {
+    img {
+      width: 100%;
+    }
+  }
+  .info {
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    grid-template-rows: 1fr 1fr;
+
+    .name {
+      font-size: 50px;
+      text-align: left;
+    }
+
+    button {
+      background-color: #ff7070;
+    }
+  }
+}

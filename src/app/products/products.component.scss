@@ -1,0 +1,291 @@
+@media (min-width: 1700px) {
+  .products {
+    padding: 15px;
+    width: calc(50vw - 30px);
+    margin-left: 25vw;
+  }
+  .products .search {
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 1700px) {
+  .products {
+    padding: 15px;
+    width: calc(100vw - 30px);
+    margin-left: 0;
+  }
+  .products .search {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.wrapper {
+  position: absolute;
+  top: 10vh;
+  overflow-y: auto;
+  height: 90vh;
+  left: 0px;
+  width: 100vw;
+}
+
+.products .search div {
+  display: flex;
+}
+
+.products .search .filter select {
+  border-color: #89b8d3;
+  border-width: 1px;
+  border-style: solid;
+  padding: 15px;
+  margin-top: 7.5px;
+  margin-bottom: 7.5px;
+  border-left: none;
+}
+
+.products .search .filter input {
+  border-right: none;
+}
+
+.products .search .filter select {
+  font-size: 20px;
+}
+
+.products .search .filter,
+.products .search .order {
+  display: flex;
+}
+
+.products .search .order {
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  * {
+    font-size: 20px;
+  }
+}
+
+.products .search .order p {
+  padding: 0;
+  margin: 0;
+}
+
+.products .result {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  justify-items: stretch;
+  align-items: stretch;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+@media (orientation: portrait) {
+  .products .result {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.card .image-place img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.card .image-place {
+  width: 100%;
+  text-align: center;
+}
+
+.product-hero {
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  .id {
+    color: #cacaca;
+    font-style: normal;
+    font-size: 14px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .features {
+    font-size: 14px;
+  }
+}
+
+.product-info {
+  div {
+    margin-top: 5px;
+    display: flex;
+    p {
+      margin: 0;
+      margin-left: 5px;
+    }
+    * {
+      font-size: 14px;
+    }
+  }
+}
+
+.card .options {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  .actions {
+    display: none;
+  }
+  .dots {
+    background-image: url("../../assets/svg/dots.svg");
+    height: 40px;
+    width: 25px;
+    background-size: 100% 100%;
+    cursor: pointer;
+  }
+  .dots:hover {
+    opacity: 0.8;
+  }
+
+  &.open {
+    .actions {
+      position: absolute;
+      display: inherit;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+      border-radius: 10px;
+      background-color: white;
+      padding: 15px;
+      padding-left: 0px;
+      padding-right: 0px;
+      margin-left: -150%;
+
+      div {
+        padding: 5px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      div:hover {
+        cursor: pointer;
+        background-color: rgba(238, 238, 238, 0.329);
+      }
+    }
+  }
+}
+
+.pagination-content {
+  display: flex;
+  justify-content: space-between;
+
+  .select-pages {
+    font-size: 20px;
+    * {
+      font-size: 20px;
+    }
+  }
+
+  .pagination {
+    display: flex;
+    * {
+      font-size: 20px;
+      margin-left: 5px;
+      margin-right: 5px;
+      display: flex;
+    }
+    .next {
+      transform: rotateZ(-90deg);
+    }
+    .previous {
+      transform: rotateZ(90deg);
+    }
+
+    .next:hover,
+    .previous:hover,
+    .page:hover {
+      opacity: 0.5;
+      cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: 1700px) {
+  .pagination-content {
+    flex-direction: column;
+    text-align: center;
+    * {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+.modal {
+  display: none;
+}
+
+.modal.open {
+  display: inherit;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  align-content: center;
+  .background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 200;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  .card {
+    z-index: 300;
+    max-width: 80vw;
+    min-width: 10vw;
+    margin: auto;
+    position: relative;
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
+    }
+
+    .exit {
+      color: #89b8d3;
+      font-size: 40px;
+      width: 100%;
+      text-align: right;
+    }
+
+    .exit:hover {
+      opacity: 0.5;
+      cursor: pointer;
+    }
+
+    .save {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}

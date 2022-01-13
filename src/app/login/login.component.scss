@@ -1,0 +1,29 @@
+form {
+  width: calc(100% - 20px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px;
+
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  height: 100%;
+}
+
+form div {
+  width: 100%;
+  text-align: left;
+}
+
+@media (orientation: landscape) {
+  form input {
+    max-width: 50%;
+  }
+  form div {
+    max-width: calc(50% + 30px);
+  }
+}

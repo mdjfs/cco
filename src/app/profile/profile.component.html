@@ -1,0 +1,25 @@
+<header>
+  <div class="left-panel">
+    <div class="hamburger" (click)="openMenu()"></div>
+    <h1 class="title">
+      Perfil
+    </h1>
+  </div>
+  <div class="menu {{menuStatus}}">
+    <div class="hamburger" (click)="closeMenu()"></div>
+    <div class="links">
+      <a>Productos</a>
+      <a>Cerrar Sesión</a>
+    </div>
+  </div>
+  <div class="user"></div>
+</header>
+<div class="profile">
+  <div class="picture">
+    <img src="../../assets/svg/user-gray.svg" />
+  </div>
+  <div class="info">
+    <div class="name">Administrador</div>
+    <button>Cerrar Sesión</button>
+  </div>
+</div>

@@ -1,0 +1,475 @@
+<header>
+  <div class="left-panel">
+    <div class="hamburger" (click)="openMenu()"></div>
+    <h1 class="title">
+      Productos
+    </h1>
+  </div>
+  <div class="menu {{menuStatus}}">
+    <div class="hamburger" (click)="closeMenu()"></div>
+    <div class="links">
+      <a>Perfil</a>
+      <a>Nuevo Producto</a>
+      <a>Cerrar Sesión</a>
+    </div>
+  </div>
+  <div class="user"></div>
+</header>
+<div class="wrapper">
+  <div class="products">
+    <div class="search"><button>Nuevo Producto</button>
+      <div class="filter"><input type="text" placeholder="Filtrar por..." /><select>
+          <option value="cheese">Cheese</option>
+          <option value="tomatoes">Tomatoes</option>
+          <option value="mozarella">Mozzarella</option>
+          <option value="mushrooms">Mushrooms</option>
+          <option value="pepperoni">Pepperoni</option>
+        </select></div>
+      <div class="order">
+        <p>Ordenar por</p> <select>
+          <option value="cheese">Cheese</option>
+          <option value="tomatoes">Tomatoes</option>
+          <option value="mozarella">Mozzarella</option>
+          <option value="mushrooms">Mushrooms</option>
+          <option value="pepperoni">Pepperoni</option>
+        </select>
+      </div>
+    </div>
+    <div class="result">
+      <div class="card">
+        <div class="options">
+          <div class="dots" (click)="openDots($event)"></div>
+          <div class="actions">
+            <div>Borrar</div>
+          </div>
+        </div>
+        <div class="image-place">
+          <img src="https://ar.kingsbikes.net/1786-large_default/kink-whip-205-2020-gloss-black-fade-bmx-bike.jpg" />
+        </div>
+        <div class="product-hero">
+          <i class="id">53453536</i>
+          <h1 class="title">BMX</h1>
+          <p class="features">Montañera 29"</p>
+        </div>
+        <div class="product-info">
+          <div><i class="fas fa-dollar-sign"></i>
+            <p>25.00</p>
+          </div>
+          <div><i class="fas fa-calendar-day"></i>
+            <p>1/12/2022</p>
+          </div>
+          <div><i class="fas fa-boxes"></i>
+            <p>Quedan 7 unidades</p>
+          </div>
+          <div><i class="fas fa-boxes"></i>
+            <p>3 unidades vendidas</p>
+          </div>
+          <div><i class="fas fa-envelope"></i>
+            <p>comprar@tienda.com</p>
+          </div>
+          <div><i class="fas fa-map-marker-alt"></i>
+            <p>Miami, USA</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="options">
+          <div class="dots" (click)="openDots($event)"></div>
+          <div class="actions">
+            <div>Borrar</div>
+          </div>
+        </div>
+        <div class="image-place">
+          <img src="https://ar.kingsbikes.net/1786-large_default/kink-whip-205-2020-gloss-black-fade-bmx-bike.jpg" />
+        </div>
+        <div class="product-hero">
+          <i class="id">53453536</i>
+          <h1 class="title">BMX</h1>
+          <p class="features">Montañera 29"</p>
+        </div>
+        <div class="product-info">
+          <div><i class="fas fa-dollar-sign"></i>
+            <p>25.00</p>
+          </div>
+          <div><i class="fas fa-calendar-day"></i>
+            <p>1/12/2022</p>
+          </div>
+          <div><i class="fas fa-boxes"></i>
+            <p>Quedan 7 unidades</p>
+          </div>
+          <div><i class="fas fa-boxes"></i>
+            <p>3 unidades vendidas</p>
+          </div>
+          <div><i class="fas fa-envelope"></i>
+            <p>comprar@tienda.com</p>
+          </div>
+          <div><i class="fas fa-map-marker-alt"></i>
+            <p>Miami, USA</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="options">
+          <div class="dots" (click)="openDots($event)"></div>
+          <div class="actions">
+            <div>Borrar</div>
+          </div>
+        </div>
+        <div class="image-place">
+          <img src="https://ar.kingsbikes.net/1786-large_default/kink-whip-205-2020-gloss-black-fade-bmx-bike.jpg" />
+        </div>
+        <div class="product-hero">
+          <i class="id">53453536</i>
+          <h1 class="title">BMX</h1>
+          <p class="features">Montañera 29"</p>
+        </div>
+        <div class="product-info">
+          <div><i class="fas fa-dollar-sign"></i>
+            <p>25.00</p>
+          </div>
+          <div><i class="fas fa-calendar-day"></i>
+            <p>1/12/2022</p>
+          </div>
+          <div><i class="fas fa-boxes"></i>
+            <p>Quedan 7 unidades</p>
+          </div>
+          <div><i class="fas fa-boxes"></i>
+            <p>3 unidades vendidas</p>
+          </div>
+          <div><i class="fas fa-envelope"></i>
+            <p>comprar@tienda.com</p>
+          </div>
+          <div><i class="fas fa-map-marker-alt"></i>
+            <p>Miami, USA</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="options">
+          <div class="dots" (click)="openDots($event)"></div>
+          <div class="actions">
+            <div>Borrar</div>
+          </div>
+        </div>
+        <div class="image-place">
+          <img src="https://ar.kingsbikes.net/1786-large_default/kink-whip-205-2020-gloss-black-fade-bmx-bike.jpg" />
+        </div>
+        <div class="product-hero">
+          <i class="id">53453536</i>
+          <h1 class="title">BMX</h1>
+          <p class="features">Montañera 29"</p>
+        </div>
+        <div class="product-info">
+          <div><i class="fas fa-dollar-sign"></i>
+            <p>25.00</p>
+          </div>
+          <div><i class="fas fa-calendar-day"></i>
+            <p>1/12/2022</p>
+          </div>
+          <div><i class="fas fa-boxes"></i>
+            <p>Quedan 7 unidades</p>
+          </div>
+          <div><i class="fas fa-boxes"></i>
+            <p>3 unidades vendidas</p>
+          </div>
+          <div><i class="fas fa-envelope"></i>
+            <p>comprar@tienda.com</p>
+          </div>
+          <div><i class="fas fa-map-marker-alt"></i>
+            <p>Miami, USA</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="options">
+          <div class="dots" (click)="openDots($event)"></div>
+          <div class="actions">
+            <div>Borrar</div>
+          </div>
+        </div>
+        <div class="image-place">
+          <img src="https://ar.kingsbikes.net/1786-large_default/kink-whip-205-2020-gloss-black-fade-bmx-bike.jpg" />
+        </div>
+        <div class="product-hero">
+          <i class="id">53453536</i>
+          <h1 class="title">BMX</h1>
+          <p class="features">Montañera 29"</p>
+        </div>
+        <div class="product-info">
+          <div><i class="fas fa-dollar-sign"></i>
+            <p>25.00</p>
+          </div>
+          <div><i class="fas fa-calendar-day"></i>
+            <p>1/12/2022</p>
+          </div>
+          <div><i class="fas fa-boxes"></i>
+            <p>Quedan 7 unidades</p>
+          </div>
+          <div><i class="fas fa-boxes"></i>
+            <p>3 unidades vendidas</p>
+          </div>
+          <div><i class="fas fa-envelope"></i>
+            <p>comprar@tienda.com</p>
+          </div>
+          <div><i class="fas fa-map-marker-alt"></i>
+            <p>Miami, USA</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="options">
+          <div class="dots" (click)="openDots($event)"></div>
+          <div class="actions">
+            <div>Borrar</div>
+          </div>
+        </div>
+        <div class="image-place">
+          <img src="https://ar.kingsbikes.net/1786-large_default/kink-whip-205-2020-gloss-black-fade-bmx-bike.jpg" />
+        </div>
+        <div class="product-hero">
+          <i class="id">53453536</i>
+          <h1 class="title">BMX</h1>
+          <p class="features">Montañera 29"</p>
+        </div>
+        <div class="product-info">
+          <div><i class="fas fa-dollar-sign"></i>
+            <p>25.00</p>
+          </div>
+          <div><i class="fas fa-calendar-day"></i>
+            <p>1/12/2022</p>
+          </div>
+          <div><i class="fas fa-boxes"></i>
+            <p>Quedan 7 unidades</p>
+          </div>
+          <div><i class="fas fa-boxes"></i>
+            <p>3 unidades vendidas</p>
+          </div>
+          <div><i class="fas fa-envelope"></i>
+            <p>comprar@tienda.com</p>
+          </div>
+          <div><i class="fas fa-map-marker-alt"></i>
+            <p>Miami, USA</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="options">
+          <div class="dots" (click)="openDots($event)"></div>
+          <div class="actions">
+            <div>Borrar</div>
+          </div>
+        </div>
+        <div class="image-place">
+          <img src="https://ar.kingsbikes.net/1786-large_default/kink-whip-205-2020-gloss-black-fade-bmx-bike.jpg" />
+        </div>
+        <div class="product-hero">
+          <i class="id">53453536</i>
+          <h1 class="title">BMX</h1>
+          <p class="features">Montañera 29"</p>
+        </div>
+        <div class="product-info">
+          <div><i class="fas fa-dollar-sign"></i>
+            <p>25.00</p>
+          </div>
+          <div><i class="fas fa-calendar-day"></i>
+            <p>1/12/2022</p>
+          </div>
+          <div><i class="fas fa-boxes"></i>
+            <p>Quedan 7 unidades</p>
+          </div>
+          <div><i class="fas fa-boxes"></i>
+            <p>3 unidades vendidas</p>
+          </div>
+          <div><i class="fas fa-envelope"></i>
+            <p>comprar@tienda.com</p>
+          </div>
+          <div><i class="fas fa-map-marker-alt"></i>
+            <p>Miami, USA</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="options">
+          <div class="dots" (click)="openDots($event)"></div>
+          <div class="actions">
+            <div>Borrar</div>
+          </div>
+        </div>
+        <div class="image-place">
+          <img src="https://ar.kingsbikes.net/1786-large_default/kink-whip-205-2020-gloss-black-fade-bmx-bike.jpg" />
+        </div>
+        <div class="product-hero">
+          <i class="id">53453536</i>
+          <h1 class="title">BMX</h1>
+          <p class="features">Montañera 29"</p>
+        </div>
+        <div class="product-info">
+          <div><i class="fas fa-dollar-sign"></i>
+            <p>25.00</p>
+          </div>
+          <div><i class="fas fa-calendar-day"></i>
+            <p>1/12/2022</p>
+          </div>
+          <div><i class="fas fa-boxes"></i>
+            <p>Quedan 7 unidades</p>
+          </div>
+          <div><i class="fas fa-boxes"></i>
+            <p>3 unidades vendidas</p>
+          </div>
+          <div><i class="fas fa-envelope"></i>
+            <p>comprar@tienda.com</p>
+          </div>
+          <div><i class="fas fa-map-marker-alt"></i>
+            <p>Miami, USA</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="options">
+          <div class="dots" (click)="openDots($event)"></div>
+          <div class="actions">
+            <div>Borrar</div>
+          </div>
+        </div>
+        <div class="image-place">
+          <img src="https://ar.kingsbikes.net/1786-large_default/kink-whip-205-2020-gloss-black-fade-bmx-bike.jpg" />
+        </div>
+        <div class="product-hero">
+          <i class="id">53453536</i>
+          <h1 class="title">BMX</h1>
+          <p class="features">Montañera 29"</p>
+        </div>
+        <div class="product-info">
+          <div><i class="fas fa-dollar-sign"></i>
+            <p>25.00</p>
+          </div>
+          <div><i class="fas fa-calendar-day"></i>
+            <p>1/12/2022</p>
+          </div>
+          <div><i class="fas fa-boxes"></i>
+            <p>Quedan 7 unidades</p>
+          </div>
+          <div><i class="fas fa-boxes"></i>
+            <p>3 unidades vendidas</p>
+          </div>
+          <div><i class="fas fa-envelope"></i>
+            <p>comprar@tienda.com</p>
+          </div>
+          <div><i class="fas fa-map-marker-alt"></i>
+            <p>Miami, USA</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="options">
+          <div class="dots" (click)="openDots($event)"></div>
+          <div class="actions">
+            <div>Borrar</div>
+          </div>
+        </div>
+        <div class="image-place">
+          <img src="https://ar.kingsbikes.net/1786-large_default/kink-whip-205-2020-gloss-black-fade-bmx-bike.jpg" />
+        </div>
+        <div class="product-hero">
+          <i class="id">53453536</i>
+          <h1 class="title">BMX</h1>
+          <p class="features">Montañera 29"</p>
+        </div>
+        <div class="product-info">
+          <div><i class="fas fa-dollar-sign"></i>
+            <p>25.00</p>
+          </div>
+          <div><i class="fas fa-calendar-day"></i>
+            <p>1/12/2022</p>
+          </div>
+          <div><i class="fas fa-boxes"></i>
+            <p>Quedan 7 unidades</p>
+          </div>
+          <div><i class="fas fa-boxes"></i>
+            <p>3 unidades vendidas</p>
+          </div>
+          <div><i class="fas fa-envelope"></i>
+            <p>comprar@tienda.com</p>
+          </div>
+          <div><i class="fas fa-map-marker-alt"></i>
+            <p>Miami, USA</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="pagination-content">
+      <div></div>
+      <div class="pagination">
+        <div class="previous"><i class="fas fa-sort-down"></i></div>
+        <div class="pages">
+          <div class="page">1</div>
+          <div class="page">2</div>
+          <div class="page">3</div>
+          <div class="page-dots">...</div>
+          <div class="page">8</div>
+        </div>
+        <div class="next"><i class="fas fa-sort-down"></i></div>
+      </div>
+      <div class="select-pages">Productos por pagina <select>
+          <option>3</option>
+          <option>6</option>
+          <option>10</option>
+          <option>50</option>
+          <option>100</option>
+          <option>Todos</option>
+        </select></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal">
+  <div class="background"></div>
+  <div class="card">
+    <div class="exit"><i class="far fa-times-circle"></i></div>
+    <form>
+      <div><label for="ID">ID</label>
+        <input type="number" min="0" step="1" id="ID" name="ID" /></div>
+      <div><label for="Name">Nombre del Producto</label>
+        <input type="text" id="Name" name="Name" /></div>
+      <div><label for="Features">Características</label>
+        <input type="text" id="Features" name="Features" /></div>
+      <div><label for="Date">Fecha de lanzamiento</label>
+        <input type="date" id="Date" name="Date" /></div>
+      <div><label for="Location">Pais de Fabricación</label><br /><br />
+        <select>
+          <option>3</option>
+          <option>6</option>
+          <option>10</option>
+          <option>50</option>
+          <option>100</option>
+          <option>Todos</option>
+        </select></div>
+      <div><label for="Mail">Correo del Fabricante</label>
+        <input type="email" id="Mail" name="Mail" /></div>
+      <div><label for="Price">Precio</label>
+        <input type="number" min="1" step="any" id="Price" name="Price" /></div>
+      <div><label for="UnitsAvailable">Unidades Disponibles</label>
+        <input type="number" min="1" step="1" name="UnitsAvailable" /></div>
+      <div><label for="Image">Imagen</label> <br /><br />
+        <input type="file" id="Image" name="Image" accept="image/*" /></div>
+      <div><label for="UnitsSold">Unidades Vendidas</label>
+        <input type="number" min="0" step="1" id="UnitsSold" name="UnitsSold" /></div>
+    </form>
+    <div class="save">
+      <button>Guardar</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal">
+  <div class="background"></div>
+  <div class="card">
+    ¿Estas seguro de que quieres borrar el producto?
+    <div style="display: flex; justify-content: space-between; width: 100%;">
+      <button>SI</button>
+      <button style="background-color: #FF7070;">NO</button>
+    </div>
+  </div>
+</div>
