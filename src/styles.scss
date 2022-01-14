@@ -87,12 +87,18 @@ header .links a {
   width: 400px;
 }
 
+header .links a:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
 header .hamburger {
   background-image: url("assets/svg/hamburger.svg");
 }
 
-header .user {
-  background-image: url("assets/svg/user.svg");
+header .user img {
+  width: 100%;
+  border-radius: 50%;
 }
 
 header .hamburger,

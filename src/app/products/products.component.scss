@@ -1,8 +1,8 @@
 @media (min-width: 1700px) {
   .products {
     padding: 15px;
-    width: calc(50vw - 30px);
-    margin-left: 25vw;
+    width: calc(70vw - 30px);
+    margin-left: 15vw;
   }
   .products .search {
     display: flex;
@@ -51,7 +51,7 @@
 }
 
 .products .search .filter select {
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .products .search .filter,
@@ -64,7 +64,7 @@
   align-items: center;
   font-size: 20px;
   * {
-    font-size: 20px;
+    font-size: 15px;
   }
 }
 

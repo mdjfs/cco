@@ -8,468 +8,162 @@
   <div class="menu {{menuStatus}}">
     <div class="hamburger" (click)="closeMenu()"></div>
     <div class="links">
-      <a>Perfil</a>
-      <a>Nuevo Producto</a>
-      <a>Cerrar Sesión</a>
+      <a (click)="goto('profile')">Perfil</a>
+      <a (click)="openProductModal()">Nuevo Producto</a>
+      <a (click)="logout()">Cerrar Sesión</a>
     </div>
   </div>
-  <div class="user"></div>
+  <div class="user" (click)="goto('profile')">
+    <img src="../../assets/svg/user.svg" #userImage />
+  </div>
 </header>
 <div class="wrapper">
   <div class="products">
-    <div class="search"><button>Nuevo Producto</button>
-      <div class="filter"><input type="text" placeholder="Filtrar por..." /><select>
-          <option value="cheese">Cheese</option>
-          <option value="tomatoes">Tomatoes</option>
-          <option value="mozarella">Mozzarella</option>
-          <option value="mushrooms">Mushrooms</option>
-          <option value="pepperoni">Pepperoni</option>
+    <div class="search"><button (click)="openProductModal()">Nuevo Producto</button>
+      <div class="filter"><input type="text" (input)="changeSearch($event)" placeholder="Filtrar por..." />
+        <select value="{{filterKey}}" (change)="changeFilter($event)">
+          <ng-container *ngFor="let option of options">
+            <option value="{{option.value}}" [selected]="filterKey === option.value">
+              {{option.name}}
+            </option>
+          </ng-container>
         </select></div>
       <div class="order">
-        <p>Ordenar por</p> <select>
-          <option value="cheese">Cheese</option>
-          <option value="tomatoes">Tomatoes</option>
-          <option value="mozarella">Mozzarella</option>
-          <option value="mushrooms">Mushrooms</option>
-          <option value="pepperoni">Pepperoni</option>
+        <p>Ordenar por</p> <select (change)="changeOrder($event)">
+          <ng-container *ngFor="let option of options">
+            <option value="{{option.value}}" [selected]="order === option.value">
+              {{option.name}}
+            </option>
+          </ng-container>
         </select>
       </div>
     </div>
     <div class="result">
-      <div class="card">
-        <div class="options">
-          <div class="dots" (click)="openDots($event)"></div>
-          <div class="actions">
-            <div>Borrar</div>
+      <ng-container *ngFor="let result of search">
+        <div class="card">
+          <div class="options">
+            <div class="dots" (click)="openDots($event)"></div>
+            <div class="actions">
+              <div (click)="ensureDestroy(result.id)">Borrar</div>
+            </div>
+          </div>
+          <div class="image-place">
+            <img src="https://cco-backend.herokuapp.com/product/image?id={{result.id}}" />
+          </div>
+          <div class="product-hero">
+            <i class="id">{{result.id}}</i>
+            <h1 class="title">{{result.name}}</h1>
+            <p class="features">{{result.feature}}</p>
+          </div>
+          <div class="product-info">
+            <div><i class="fas fa-dollar-sign"></i>
+              <p>{{result.price}}</p>
+            </div>
+            <div><i class="fas fa-calendar-day"></i>
+              <p>{{result.date}}</p>
+            </div>
+            <div><i class="fas fa-boxes"></i>
+              <p>Quedan {{result.unitAvailable}} unidades</p>
+            </div>
+            <div><i class="fas fa-boxes"></i>
+              <p>{{result.unitSold}} unidades vendidas</p>
+            </div>
+            <div><i class="fas fa-envelope"></i>
+              <p>{{result.mail}}</p>
+            </div>
+            <div><i class="fas fa-map-marker-alt"></i>
+              <p>{{result.location}}</p>
+            </div>
           </div>
         </div>
-        <div class="image-place">
-          <img src="https://ar.kingsbikes.net/1786-large_default/kink-whip-205-2020-gloss-black-fade-bmx-bike.jpg" />
-        </div>
-        <div class="product-hero">
-          <i class="id">53453536</i>
-          <h1 class="title">BMX</h1>
-          <p class="features">Montañera 29"</p>
-        </div>
-        <div class="product-info">
-          <div><i class="fas fa-dollar-sign"></i>
-            <p>25.00</p>
-          </div>
-          <div><i class="fas fa-calendar-day"></i>
-            <p>1/12/2022</p>
-          </div>
-          <div><i class="fas fa-boxes"></i>
-            <p>Quedan 7 unidades</p>
-          </div>
-          <div><i class="fas fa-boxes"></i>
-            <p>3 unidades vendidas</p>
-          </div>
-          <div><i class="fas fa-envelope"></i>
-            <p>comprar@tienda.com</p>
-          </div>
-          <div><i class="fas fa-map-marker-alt"></i>
-            <p>Miami, USA</p>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="options">
-          <div class="dots" (click)="openDots($event)"></div>
-          <div class="actions">
-            <div>Borrar</div>
-          </div>
-        </div>
-        <div class="image-place">
-          <img src="https://ar.kingsbikes.net/1786-large_default/kink-whip-205-2020-gloss-black-fade-bmx-bike.jpg" />
-        </div>
-        <div class="product-hero">
-          <i class="id">53453536</i>
-          <h1 class="title">BMX</h1>
-          <p class="features">Montañera 29"</p>
-        </div>
-        <div class="product-info">
-          <div><i class="fas fa-dollar-sign"></i>
-            <p>25.00</p>
-          </div>
-          <div><i class="fas fa-calendar-day"></i>
-            <p>1/12/2022</p>
-          </div>
-          <div><i class="fas fa-boxes"></i>
-            <p>Quedan 7 unidades</p>
-          </div>
-          <div><i class="fas fa-boxes"></i>
-            <p>3 unidades vendidas</p>
-          </div>
-          <div><i class="fas fa-envelope"></i>
-            <p>comprar@tienda.com</p>
-          </div>
-          <div><i class="fas fa-map-marker-alt"></i>
-            <p>Miami, USA</p>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="options">
-          <div class="dots" (click)="openDots($event)"></div>
-          <div class="actions">
-            <div>Borrar</div>
-          </div>
-        </div>
-        <div class="image-place">
-          <img src="https://ar.kingsbikes.net/1786-large_default/kink-whip-205-2020-gloss-black-fade-bmx-bike.jpg" />
-        </div>
-        <div class="product-hero">
-          <i class="id">53453536</i>
-          <h1 class="title">BMX</h1>
-          <p class="features">Montañera 29"</p>
-        </div>
-        <div class="product-info">
-          <div><i class="fas fa-dollar-sign"></i>
-            <p>25.00</p>
-          </div>
-          <div><i class="fas fa-calendar-day"></i>
-            <p>1/12/2022</p>
-          </div>
-          <div><i class="fas fa-boxes"></i>
-            <p>Quedan 7 unidades</p>
-          </div>
-          <div><i class="fas fa-boxes"></i>
-            <p>3 unidades vendidas</p>
-          </div>
-          <div><i class="fas fa-envelope"></i>
-            <p>comprar@tienda.com</p>
-          </div>
-          <div><i class="fas fa-map-marker-alt"></i>
-            <p>Miami, USA</p>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="options">
-          <div class="dots" (click)="openDots($event)"></div>
-          <div class="actions">
-            <div>Borrar</div>
-          </div>
-        </div>
-        <div class="image-place">
-          <img src="https://ar.kingsbikes.net/1786-large_default/kink-whip-205-2020-gloss-black-fade-bmx-bike.jpg" />
-        </div>
-        <div class="product-hero">
-          <i class="id">53453536</i>
-          <h1 class="title">BMX</h1>
-          <p class="features">Montañera 29"</p>
-        </div>
-        <div class="product-info">
-          <div><i class="fas fa-dollar-sign"></i>
-            <p>25.00</p>
-          </div>
-          <div><i class="fas fa-calendar-day"></i>
-            <p>1/12/2022</p>
-          </div>
-          <div><i class="fas fa-boxes"></i>
-            <p>Quedan 7 unidades</p>
-          </div>
-          <div><i class="fas fa-boxes"></i>
-            <p>3 unidades vendidas</p>
-          </div>
-          <div><i class="fas fa-envelope"></i>
-            <p>comprar@tienda.com</p>
-          </div>
-          <div><i class="fas fa-map-marker-alt"></i>
-            <p>Miami, USA</p>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="options">
-          <div class="dots" (click)="openDots($event)"></div>
-          <div class="actions">
-            <div>Borrar</div>
-          </div>
-        </div>
-        <div class="image-place">
-          <img src="https://ar.kingsbikes.net/1786-large_default/kink-whip-205-2020-gloss-black-fade-bmx-bike.jpg" />
-        </div>
-        <div class="product-hero">
-          <i class="id">53453536</i>
-          <h1 class="title">BMX</h1>
-          <p class="features">Montañera 29"</p>
-        </div>
-        <div class="product-info">
-          <div><i class="fas fa-dollar-sign"></i>
-            <p>25.00</p>
-          </div>
-          <div><i class="fas fa-calendar-day"></i>
-            <p>1/12/2022</p>
-          </div>
-          <div><i class="fas fa-boxes"></i>
-            <p>Quedan 7 unidades</p>
-          </div>
-          <div><i class="fas fa-boxes"></i>
-            <p>3 unidades vendidas</p>
-          </div>
-          <div><i class="fas fa-envelope"></i>
-            <p>comprar@tienda.com</p>
-          </div>
-          <div><i class="fas fa-map-marker-alt"></i>
-            <p>Miami, USA</p>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="options">
-          <div class="dots" (click)="openDots($event)"></div>
-          <div class="actions">
-            <div>Borrar</div>
-          </div>
-        </div>
-        <div class="image-place">
-          <img src="https://ar.kingsbikes.net/1786-large_default/kink-whip-205-2020-gloss-black-fade-bmx-bike.jpg" />
-        </div>
-        <div class="product-hero">
-          <i class="id">53453536</i>
-          <h1 class="title">BMX</h1>
-          <p class="features">Montañera 29"</p>
-        </div>
-        <div class="product-info">
-          <div><i class="fas fa-dollar-sign"></i>
-            <p>25.00</p>
-          </div>
-          <div><i class="fas fa-calendar-day"></i>
-            <p>1/12/2022</p>
-          </div>
-          <div><i class="fas fa-boxes"></i>
-            <p>Quedan 7 unidades</p>
-          </div>
-          <div><i class="fas fa-boxes"></i>
-            <p>3 unidades vendidas</p>
-          </div>
-          <div><i class="fas fa-envelope"></i>
-            <p>comprar@tienda.com</p>
-          </div>
-          <div><i class="fas fa-map-marker-alt"></i>
-            <p>Miami, USA</p>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="options">
-          <div class="dots" (click)="openDots($event)"></div>
-          <div class="actions">
-            <div>Borrar</div>
-          </div>
-        </div>
-        <div class="image-place">
-          <img src="https://ar.kingsbikes.net/1786-large_default/kink-whip-205-2020-gloss-black-fade-bmx-bike.jpg" />
-        </div>
-        <div class="product-hero">
-          <i class="id">53453536</i>
-          <h1 class="title">BMX</h1>
-          <p class="features">Montañera 29"</p>
-        </div>
-        <div class="product-info">
-          <div><i class="fas fa-dollar-sign"></i>
-            <p>25.00</p>
-          </div>
-          <div><i class="fas fa-calendar-day"></i>
-            <p>1/12/2022</p>
-          </div>
-          <div><i class="fas fa-boxes"></i>
-            <p>Quedan 7 unidades</p>
-          </div>
-          <div><i class="fas fa-boxes"></i>
-            <p>3 unidades vendidas</p>
-          </div>
-          <div><i class="fas fa-envelope"></i>
-            <p>comprar@tienda.com</p>
-          </div>
-          <div><i class="fas fa-map-marker-alt"></i>
-            <p>Miami, USA</p>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="options">
-          <div class="dots" (click)="openDots($event)"></div>
-          <div class="actions">
-            <div>Borrar</div>
-          </div>
-        </div>
-        <div class="image-place">
-          <img src="https://ar.kingsbikes.net/1786-large_default/kink-whip-205-2020-gloss-black-fade-bmx-bike.jpg" />
-        </div>
-        <div class="product-hero">
-          <i class="id">53453536</i>
-          <h1 class="title">BMX</h1>
-          <p class="features">Montañera 29"</p>
-        </div>
-        <div class="product-info">
-          <div><i class="fas fa-dollar-sign"></i>
-            <p>25.00</p>
-          </div>
-          <div><i class="fas fa-calendar-day"></i>
-            <p>1/12/2022</p>
-          </div>
-          <div><i class="fas fa-boxes"></i>
-            <p>Quedan 7 unidades</p>
-          </div>
-          <div><i class="fas fa-boxes"></i>
-            <p>3 unidades vendidas</p>
-          </div>
-          <div><i class="fas fa-envelope"></i>
-            <p>comprar@tienda.com</p>
-          </div>
-          <div><i class="fas fa-map-marker-alt"></i>
-            <p>Miami, USA</p>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="options">
-          <div class="dots" (click)="openDots($event)"></div>
-          <div class="actions">
-            <div>Borrar</div>
-          </div>
-        </div>
-        <div class="image-place">
-          <img src="https://ar.kingsbikes.net/1786-large_default/kink-whip-205-2020-gloss-black-fade-bmx-bike.jpg" />
-        </div>
-        <div class="product-hero">
-          <i class="id">53453536</i>
-          <h1 class="title">BMX</h1>
-          <p class="features">Montañera 29"</p>
-        </div>
-        <div class="product-info">
-          <div><i class="fas fa-dollar-sign"></i>
-            <p>25.00</p>
-          </div>
-          <div><i class="fas fa-calendar-day"></i>
-            <p>1/12/2022</p>
-          </div>
-          <div><i class="fas fa-boxes"></i>
-            <p>Quedan 7 unidades</p>
-          </div>
-          <div><i class="fas fa-boxes"></i>
-            <p>3 unidades vendidas</p>
-          </div>
-          <div><i class="fas fa-envelope"></i>
-            <p>comprar@tienda.com</p>
-          </div>
-          <div><i class="fas fa-map-marker-alt"></i>
-            <p>Miami, USA</p>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="options">
-          <div class="dots" (click)="openDots($event)"></div>
-          <div class="actions">
-            <div>Borrar</div>
-          </div>
-        </div>
-        <div class="image-place">
-          <img src="https://ar.kingsbikes.net/1786-large_default/kink-whip-205-2020-gloss-black-fade-bmx-bike.jpg" />
-        </div>
-        <div class="product-hero">
-          <i class="id">53453536</i>
-          <h1 class="title">BMX</h1>
-          <p class="features">Montañera 29"</p>
-        </div>
-        <div class="product-info">
-          <div><i class="fas fa-dollar-sign"></i>
-            <p>25.00</p>
-          </div>
-          <div><i class="fas fa-calendar-day"></i>
-            <p>1/12/2022</p>
-          </div>
-          <div><i class="fas fa-boxes"></i>
-            <p>Quedan 7 unidades</p>
-          </div>
-          <div><i class="fas fa-boxes"></i>
-            <p>3 unidades vendidas</p>
-          </div>
-          <div><i class="fas fa-envelope"></i>
-            <p>comprar@tienda.com</p>
-          </div>
-          <div><i class="fas fa-map-marker-alt"></i>
-            <p>Miami, USA</p>
-          </div>
-        </div>
-      </div>
-
+      </ng-container>
     </div>
     <div class="pagination-content">
       <div></div>
-      <div class="pagination">
-        <div class="previous"><i class="fas fa-sort-down"></i></div>
-        <div class="pages">
-          <div class="page">1</div>
-          <div class="page">2</div>
-          <div class="page">3</div>
-          <div class="page-dots">...</div>
-          <div class="page">8</div>
+
+      <ng-container *ngIf="totalPages > 1">
+        <div class="pagination">
+          <ng-container *ngIf="page-1 >= 1">
+            <div class="previous" (click)="prev()"><i class="fas fa-sort-down"></i></div>
+          </ng-container>
+          <div class="pages">
+            <ng-container *ngIf="page-1 >= 1">
+              <div class="page" (click)="prev()">{{page-1}}</div>
+            </ng-container>
+            <div class="page">{{page}}</div>
+            <ng-container *ngIf="page+1 < totalPages">
+              <div class="page" (click)="next()">{{page+1}}</div>
+            </ng-container>
+            <ng-container *ngIf="totalPages !== page">
+
+              <div class="page-dots">...</div>
+              <div class="page" (click)="last()">{{totalPages}}</div>
+            </ng-container>
+          </div>
+          <ng-container *ngIf="page+1 <= totalPages">
+            <div class="next" (click)="next()"><i class="fas fa-sort-down"></i></div>
+          </ng-container>
         </div>
-        <div class="next"><i class="fas fa-sort-down"></i></div>
-      </div>
-      <div class="select-pages">Productos por pagina <select>
-          <option>3</option>
-          <option>6</option>
-          <option>10</option>
-          <option>50</option>
-          <option>100</option>
-          <option>Todos</option>
+
+      </ng-container>
+      <div class="select-pages">Productos por pagina <select (change)="changePageSize($event)">
+          <option value="3">3</option>
+          <option value="6">6</option>
+          <option value="10">10</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+          <option value="1000">Todos</option>
         </select></div>
     </div>
+
   </div>
 </div>
 
-<div class="modal">
+<div class="modal {{productStatus}}">
   <div class="background"></div>
   <div class="card">
-    <div class="exit"><i class="far fa-times-circle"></i></div>
-    <form>
-      <div><label for="ID">ID</label>
-        <input type="number" min="0" step="1" id="ID" name="ID" /></div>
-      <div><label for="Name">Nombre del Producto</label>
-        <input type="text" id="Name" name="Name" /></div>
-      <div><label for="Features">Características</label>
-        <input type="text" id="Features" name="Features" /></div>
-      <div><label for="Date">Fecha de lanzamiento</label>
-        <input type="date" id="Date" name="Date" /></div>
-      <div><label for="Location">Pais de Fabricación</label><br /><br />
-        <select>
-          <option>3</option>
-          <option>6</option>
-          <option>10</option>
-          <option>50</option>
-          <option>100</option>
-          <option>Todos</option>
+    <div class="exit" (click)="closeProductModal()"><i class="far fa-times-circle"></i></div>
+    <div class="message">{{formMessage}}</div>
+    <form #productForm>
+      <div><label for="id">ID</label>
+        <input type="number" min="0" step="1" id="id" name="id" required /></div>
+      <div><label for="name">Nombre del Producto</label>
+        <input type="text" id="name" name="name" required /></div>
+      <div><label for="feature">Características</label>
+        <input type="text" id="feature" name="feature" required /></div>
+      <div><label for="date">Fecha de lanzamiento</label>
+        <input type="date" id="date" name="date" required /></div>
+      <div><label for="location">Pais de Fabricación</label><br /><br />
+        <select id="location" name="location" required>
+          <option *ngFor="let country of countries">
+            {{country['name']['common']}}
+          </option>
         </select></div>
-      <div><label for="Mail">Correo del Fabricante</label>
-        <input type="email" id="Mail" name="Mail" /></div>
-      <div><label for="Price">Precio</label>
-        <input type="number" min="1" step="any" id="Price" name="Price" /></div>
-      <div><label for="UnitsAvailable">Unidades Disponibles</label>
-        <input type="number" min="1" step="1" name="UnitsAvailable" /></div>
-      <div><label for="Image">Imagen</label> <br /><br />
-        <input type="file" id="Image" name="Image" accept="image/*" /></div>
-      <div><label for="UnitsSold">Unidades Vendidas</label>
-        <input type="number" min="0" step="1" id="UnitsSold" name="UnitsSold" /></div>
+      <div><label for="mail">Correo del Fabricante</label>
+        <input type="email" id="mail" name="mail" required /></div>
+      <div><label for="price">Precio</label>
+        <input type="number" min="1" step="any" id="price" name="price" required /></div>
+      <div><label for="unitAvailable">Unidades Disponibles</label>
+        <input type="number" min="1" step="1" name="unitAvailable" required /></div>
+      <div><label for="picture">Imagen</label> <br /><br />
+        <input type="file" id="picture" name="picture" accept="image/*" required /></div>
+      <div><label for="unitSold">Unidades Vendidas</label>
+        <input type="number" min="0" step="1" id="unitSold" name="unitSold" required /></div>
     </form>
     <div class="save">
-      <button>Guardar</button>
+      <button (click)="submitForm()">Guardar</button>
     </div>
   </div>
 </div>
 
 
-<div class="modal">
+<div class="modal {{destroyStatus}}">
   <div class="background"></div>
   <div class="card">
     ¿Estas seguro de que quieres borrar el producto?
     <div style="display: flex; justify-content: space-between; width: 100%;">
-      <button>SI</button>
-      <button style="background-color: #FF7070;">NO</button>
+      <button (click)="doDestroy()">SI</button>
+      <button (click)="dontDestroy()" style="background-color: #FF7070;">NO</button>
     </div>
   </div>
 </div>

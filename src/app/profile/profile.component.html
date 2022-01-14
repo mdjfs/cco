@@ -8,18 +8,20 @@
   <div class="menu {{menuStatus}}">
     <div class="hamburger" (click)="closeMenu()"></div>
     <div class="links">
-      <a>Productos</a>
-      <a>Cerrar Sesión</a>
+      <a (click)="goto('products')">Productos</a>
+      <a (click)="logout()">Cerrar Sesión</a>
     </div>
   </div>
-  <div class="user"></div>
+  <div class="user">
+    <img src="../../assets/svg/user.svg" #userImage />
+  </div>
 </header>
 <div class="profile">
-  <div class="picture">
-    <img src="../../assets/svg/user-gray.svg" />
+  <div class="picture" (click)="changePicture()">
+    <img src="../../assets/svg/user-gray.svg" #profileImage />
   </div>
   <div class="info">
-    <div class="name">Administrador</div>
-    <button>Cerrar Sesión</button>
+    <div class="name">{{username}}</div>
+    <button (click)="logout()">Cerrar Sesión</button>
   </div>
 </div>

@@ -1,7 +1,8 @@
-<form>
-  <input type="text" placeholder="Usuario">
-  <input type="password" placeholder="Contraseña">
+<div class="login">
+  <p>{{error}}</p>
+  <input type="text" placeholder="Usuario" #username>
+  <input type="password" placeholder="Contraseña" #password>
   <div>
-    <button>Iniciar Sesión</button>
+    <button (click)="login(username.value, password.value)">Iniciar Sesión</button>
   </div>
-</form>
+</div>
